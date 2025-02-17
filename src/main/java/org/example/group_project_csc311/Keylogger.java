@@ -3,7 +3,7 @@ package org.example.group_project_csc311;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Keylogger implements KeyListener {
+public class KeyLogger implements KeyListener {
 
 
     boolean upPressed, downPressed, leftPressed, rightPressed;
