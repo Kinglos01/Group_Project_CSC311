@@ -12,10 +12,10 @@ public class MazeController {
     @FXML
     private ImageView robot;
 
-    @FXML
     /**
-     * updates the position of the robot
+     * Updates the current position of the robot
      */
+    @FXML
     protected void positionUpdate() {
 
         KeyLogger keyLog = new KeyLogger();
