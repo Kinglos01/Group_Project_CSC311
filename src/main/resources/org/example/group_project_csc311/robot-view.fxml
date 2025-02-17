@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<<< HEAD:src/main/resources/org/example/group_project_csc311/hello-view.fxml
-========
-
 <?import javafx.scene.image.Image?>
->>>>>>>> origin/main:src/main/resources/org/example/group_project_csc311/robot-view.fxml
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.group_project_csc311.MazeController">
    <children>
-      <ImageView fx:id="maze" fitHeight="600.0" fitWidth="600.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="robot" fitHeight="50.0" fitWidth="50.0" layoutX="37.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="maze" fitHeight="425.0" fitWidth="600.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/maze.png" />
+         </image></ImageView>
+      <ImageView fx:id="robot" fitHeight="25.0" fitWidth="25.0" layoutX="10.0" layoutY="255.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/robot.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>
