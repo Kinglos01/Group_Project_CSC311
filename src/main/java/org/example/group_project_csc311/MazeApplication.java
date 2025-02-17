@@ -12,7 +12,7 @@ public class MazeApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MazeApplication.class.getResource("robot-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 425 );
-        stage.setTitle("Maze Program");
+        stage.setTitle("Maze");
         stage.setScene(scene);
         stage.show();
     }

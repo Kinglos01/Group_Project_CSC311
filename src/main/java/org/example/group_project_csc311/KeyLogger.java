@@ -13,6 +13,10 @@ public class KeyLogger implements KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
+    /**
+     * Sets key pressed to true
+     * @KeyEvent the key being pressed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -33,6 +37,10 @@ public class KeyLogger implements KeyListener {
 
     }
 
+    /**
+     * Sets key pressed to false
+     * @KeyEvent the key being pressed
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
