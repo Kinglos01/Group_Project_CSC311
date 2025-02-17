@@ -3,9 +3,13 @@ package org.example.group_project_csc311;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class MazeController {
+    
     @FXML
-    private Label welcomeText;
+    private ImageView maze;
+
+    @FXML
+    private ImageView robot;
 
     Keylogger KeyLog = new Keylogger();
     int RobotSpeed = 1;
@@ -30,5 +34,6 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
+
     }
 }
