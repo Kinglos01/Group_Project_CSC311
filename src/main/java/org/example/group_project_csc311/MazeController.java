@@ -1,6 +1,7 @@
 package org.example.group_project_csc311;
 
 import javafx.fxml.FXML;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
@@ -19,10 +20,8 @@ public class MazeController {
      * Updates the current position of the robot
      */
     @FXML
-    protected void positionUpdate(KeyEvent e) {
+    protected void positionUpdate() {
         KeyLogger keyLog = new KeyLogger();
-
-        keyLog.keyPressed(e);
 
         int robotSpeed = 10;
 
