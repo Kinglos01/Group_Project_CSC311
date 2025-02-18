@@ -22,7 +22,7 @@ public class MazeController {
     @FXML
     protected void positionUpdate() {
         KeyLogger keyLog = new KeyLogger();
-
+      
         int robotSpeed = 10;
 
         if(!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), keyLog))) {
