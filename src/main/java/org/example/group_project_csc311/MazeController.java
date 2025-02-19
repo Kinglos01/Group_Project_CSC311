@@ -20,10 +20,8 @@ public class MazeController {
      * Updates the current position of the robot
      */
     @FXML
-    protected void positionUpdate(KeyEvent e) {
+    protected void positionUpdate() {
         KeyLogger keyLog = new KeyLogger();
-
-        keyLog.keyPressed(e);
 
         int robotSpeed = 10;
 
