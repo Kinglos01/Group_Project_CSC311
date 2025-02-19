@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#positionUpdate" prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.group_project_csc311.MazeController">
    <children>
-      <ImageView fx:id="maze" fitHeight="425.0" fitWidth="600.0" layoutY="1.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="maze" fitHeight="425.0" fitWidth="600.0" layoutY="1.0" onKeyPressed="#positionUpdate" onKeyReleased="#stop" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/maze.png" />
          </image></ImageView>
