@@ -14,6 +14,8 @@ public class MazeController {
     @FXML
     private ImageView maze;
 
+    KeyLogger keyLog = new KeyLogger();
+
     @FXML
     private ImageView robot;
 
@@ -22,24 +24,29 @@ public class MazeController {
      */
     @FXML
     protected void positionUpdate(KeyEvent e) {
-        KeyLogger keyLog = new KeyLogger();
+
+        keyLog.keyPressed(e);
 
         int robotSpeed = 10;
 
-        if(!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
-            if (e.getCode() == KeyCode.W) {
-                robot.setLayoutY(robot.getLayoutY() - robotSpeed);
+        try {
+            if (!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
+
+                if (e.getCode() == KeyCode.W) {
+                    keyLog.keyPressed(e);
+                    robot.setLayoutY(robot.getLayoutY() - robotSpeed);
+                }
+                if (e.getCode() == KeyCode.S) {
+                    robot.setLayoutY(robot.getLayoutY() + robotSpeed);
+                }
+                if (e.getCode() == KeyCode.A) {
+                    robot.setLayoutX(robot.getLayoutX() - robotSpeed);
+                }
+                if (e.getCode() == KeyCode.D) {
+                    robot.setLayoutX(robot.getLayoutX() + robotSpeed);
+                }
             }
-            if (e.getCode() == KeyCode.S) {
-                robot.setLayoutY(robot.getLayoutY() + robotSpeed);
-            }
-            if (e.getCode() == KeyCode.A) {
-                robot.setLayoutX(robot.getLayoutX() - robotSpeed);
-            }
-            if (e.getCode() == KeyCode.D) {
-                robot.setLayoutX(robot.getLayoutX() + robotSpeed);
-            }
-        }
+        } catch(IndexOutOfBoundsException error) { }
     }
 
     /**
@@ -82,6 +89,6 @@ public class MazeController {
 
     @FXML
     protected void stop() {
-
+        keyLog.keyReleased();
     }
 }
