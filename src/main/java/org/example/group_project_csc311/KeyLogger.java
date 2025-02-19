@@ -1,38 +1,33 @@
 package org.example.group_project_csc311;
 
-import java.awt.event.KeyEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 import java.awt.event.KeyListener;
 
 
-public class KeyLogger implements KeyListener {
+public class KeyLogger {
 
 
     boolean upPressed, downPressed, leftPressed, rightPressed;
 
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
     /**
      * Sets key pressed to true
+     *
      * @KeyEvent the key being pressed
-     */
-    @Override
+     **/
     public void keyPressed(KeyEvent e) {
 
-        int code = e.getKeyCode();
-
-        if(code == KeyEvent.VK_UP) {
+        if (e.getCode() == KeyCode.UP) {
             upPressed = true;
         }
-        if(code == KeyEvent.VK_DOWN) {
+        if (e.getCode() == KeyCode.DOWN) {
             downPressed = true;
         }
-        if(code == KeyEvent.VK_LEFT) {
+        if (e.getCode() == KeyCode.LEFT) {
             leftPressed = true;
         }
-        if(code == KeyEvent.VK_RIGHT) {
+        if (e.getCode() == KeyCode.RIGHT) {
             rightPressed = true;
         }
 
@@ -40,26 +35,15 @@ public class KeyLogger implements KeyListener {
 
     /**
      * Sets key pressed to false
+     *
      * @KeyEvent the key being pressed
      */
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
+    public void keyReleased() {
 
-        if(code == KeyEvent.VK_UP) {
-            upPressed = false;
-        }
-        if(code == KeyEvent.VK_DOWN) {
-            downPressed = false;
-        }
-        if(code == KeyEvent.VK_LEFT) {
-            leftPressed = false;
-        }
-        if(code == KeyEvent.VK_RIGHT) {
-            rightPressed = false;
-        }
+        upPressed = false;
+        downPressed = false;
+        leftPressed = false;
+        rightPressed = false;
 
     }
-
-
 }
