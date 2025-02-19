@@ -33,7 +33,6 @@ public class MazeController {
             if (!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
 
                 if (e.getCode() == KeyCode.W) {
-                    keyLog.keyPressed(e);
                     robot.setLayoutY(robot.getLayoutY() - robotSpeed);
                 }
                 if (e.getCode() == KeyCode.S) {
