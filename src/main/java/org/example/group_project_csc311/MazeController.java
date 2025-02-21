@@ -7,7 +7,6 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.util.*;
 public class MazeController {
@@ -20,6 +19,7 @@ public class MazeController {
     @FXML
     private ImageView robot;
 
+    final int robotSpeed = 10;
     /**
 
     Updates the current position of the robot**/
@@ -29,13 +29,12 @@ public class MazeController {
 
         keyLog.keyPressed(e);
 
-        int robotSpeed = 10;
+
 
         if(!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
 
             if (e.getCode() == KeyCode.W) {
-                robot.translateXProperty().set(robotSpeed);
-                //robot.setLayoutY(robot.getLayoutY() - robotSpeed);
+                robot.setLayoutY(robot.getLayoutY() - robotSpeed);
             }
             if (e.getCode() == KeyCode.S) {
                 robot.setLayoutY(robot.getLayoutY() + robotSpeed);
@@ -82,7 +81,14 @@ public class MazeController {
     private boolean pixelColor(int x, int y) {
         Image mazeImage = maze.getImage();
         PixelReader p = mazeImage.getPixelReader();
-        Color color = p.getColor(x, y);
+        Color color = null;
+        try {
+            color = p.getColor(x, y);
+        }
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Out of bounds!");
+            return false;
+        }
         return color.toString().equals("0x005399ff");
     }
     /**
@@ -90,17 +96,42 @@ public class MazeController {
      Autoplay the robot*/
     @FXML
     protected void autoMove(Direction d) {
-        if (d == Direction.left) {
-            robot.translateXProperty().set(10);
+        switch (d) {
+            case left:
+                robot.setLayoutX(robot.getLayoutX() - robotSpeed);
+                System.out.println("moved left");
+                break;
+            case right:
+                robot.setLayoutX(robot.getLayoutX() + robotSpeed);
+                System.out.println("moved right");
+                break;
+            case up:
+                robot.setLayoutY(robot.getLayoutY() + robotSpeed);
+                System.out.println("moved up");
+                break;
+            case down:
+                robot.setLayoutY(robot.getLayoutY() - robotSpeed);
+                System.out.println("moved down");
+                break;
+            default:
+                System.out.println("automove failed!");
         }
-        else if (d == Direction.right) {
-            robot.translateXProperty().set(-10);
-        }
-        else if (d == Direction.up) {
-            robot.translateYProperty().set(10);
-        }
-        else {
-            robot.translateYProperty().set(-10);
+        System.out.println("automove done");
+    }
+
+    @FXML
+    protected Direction oppositeMove(Direction d) {
+        switch (d) {
+            case left:
+                return Direction.right;
+            case right:
+                return Direction.left;
+            case up:
+                return Direction.down;
+            case down:
+                return Direction.up;
+            default:
+                return null;
         }
     }
     @FXML
@@ -113,48 +144,51 @@ public class MazeController {
         boolean atEnd = false;
         int index1 = 0;
         int index2 = 0;
-        while (robot.getX() != 700) {
-            System.out.println(index1);
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() + 12)) {
+        boolean done = false;
+        while (robot.getX() != 700 && !done) {
+            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() + 20)) {
                 possibleMoves[index1] = Direction.up;
                 index1++;
-            }
-            System.out.println(index1);
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() - 12)) {
+            };
+            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() - 20)) {
                 possibleMoves[index1] = Direction.down;
                 index1++;
             }
-            System.out.println(index1);
-            /*if (pixelColor((int) robot.getLayoutX() - 2, (int) robot.getLayoutY())) {
+            if (pixelColor((int) robot.getLayoutX() - 20, (int) robot.getLayoutY() - 16)) {
                 possibleMoves[index1] = Direction.left;
                 index1++;
-            }*/
-            System.out.println(index1);
-            if (pixelColor((int) robot.getLayoutX() + 12, (int) robot.getLayoutY())) {
+            }
+            if (pixelColor((int) robot.getLayoutX() + 20, (int) robot.getLayoutY() - 16)) {
                 possibleMoves[index1] = Direction.right;
                 index1++;
             }
-            System.out.println("made it thru the color check");
+
+            System.out.println("possible moves: " + index1);
             if (index1 == 1 && possibleMoves[0] == lastMove) {
                 while (index2 != 0) {
                     autoMove(savedMoves[index2]);
                     index2--;
                 }
+                System.out.println("reached dead end");
             } else if (index1 == 1) {
-                autoMove(possibleMoves[index1]);
+                autoMove(possibleMoves[0]);
+                lastMove = possibleMoves[0];
+                savedMoves[index2] = lastMove;
+                index2++;
+                System.out.println("only one way to go");
             } else if (index1 > 1) {
                 chosenMove = rnd.nextInt(4);
+                while (possibleMoves[chosenMove] == null || possibleMoves[chosenMove] == lastMove) {
+                    chosenMove = rnd.nextInt(4);
+                }
                 savedMoves[index2] = possibleMoves[chosenMove];
                 autoMove(possibleMoves[chosenMove]);
                 index2++;
+                System.out.println("lets pick a path");
             }
             index1 = 0;
-            System.out.println("made it through the automove");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
 
-            }
+            done = true;
         }
     }
 
