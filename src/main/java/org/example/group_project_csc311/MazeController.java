@@ -19,7 +19,7 @@ public class MazeController {
     @FXML
     private ImageView robot;
 
-    final int robotSpeed = 10;
+    final int robotSpeed = 25;
     /**
 
     Updates the current position of the robot**/
@@ -106,11 +106,11 @@ public class MazeController {
                 System.out.println("moved right");
                 break;
             case up:
-                robot.setLayoutY(robot.getLayoutY() + robotSpeed);
+                robot.setLayoutY(robot.getLayoutY() - robotSpeed);
                 System.out.println("moved up");
                 break;
             case down:
-                robot.setLayoutY(robot.getLayoutY() - robotSpeed);
+                robot.setLayoutY(robot.getLayoutY() + robotSpeed);
                 System.out.println("moved down");
                 break;
             default:
@@ -141,16 +141,18 @@ public class MazeController {
         Direction[] possibleMoves = new Direction[4];
         Direction lastMove = Direction.left;
         int chosenMove;
+        boolean travellingState = false;
         boolean atEnd = false;
+        Direction nextMove;
         int index1 = 0;
         int index2 = 0;
         boolean done = false;
-        while (robot.getX() != 700 && !done) {
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() + 20)) {
+        while (robot.getX() <= 700 && !done) {
+            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() - 20)) {
                 possibleMoves[index1] = Direction.up;
                 index1++;
             };
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() - 20)) {
+            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() + 20)) {
                 possibleMoves[index1] = Direction.down;
                 index1++;
             }
@@ -164,27 +166,30 @@ public class MazeController {
             }
 
             System.out.println("possible moves: " + index1);
-            if (index1 == 1 && possibleMoves[0] == lastMove) {
-                while (index2 != 0) {
-                    autoMove(savedMoves[index2]);
-                    index2--;
+
+            if (index1 == 1) {
+                if (lastMove == possibleMoves[0]) {
+                    travellingState = false;
+                    while (index2 != 0) {
+                        index2--;
+                    }
                 }
-                System.out.println("reached dead end");
-            } else if (index1 == 1) {
-                autoMove(possibleMoves[0]);
-                lastMove = possibleMoves[0];
-                savedMoves[index2] = lastMove;
-                index2++;
-                System.out.println("only one way to go");
-            } else if (index1 > 1) {
-                chosenMove = rnd.nextInt(4);
-                while (possibleMoves[chosenMove] == null || possibleMoves[chosenMove] == lastMove) {
-                    chosenMove = rnd.nextInt(4);
+                else {
+                    lastMove = possibleMoves[0];
+                    autoMove(possibleMoves[0]);
+                    if (travellingState == true) {
+                        savedMoves[index2] = lastMove;
+                        index2++;
+                    }
                 }
-                savedMoves[index2] = possibleMoves[chosenMove];
-                autoMove(possibleMoves[chosenMove]);
-                index2++;
-                System.out.println("lets pick a path");
+
+            }
+            else if (index1 > 1) {
+                do {
+                    nextMove = possibleMoves[rnd.nextInt(index1)];
+                } while (nextMove == lastMove);
+                lastMove = nextMove;
+                autoMove(nextMove);
             }
             index1 = 0;
 
