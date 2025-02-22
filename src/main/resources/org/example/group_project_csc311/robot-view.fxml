@@ -11,16 +11,16 @@
    <tabs>
       <Tab fx:id="mazeTab1" text="Maze 1">
          <content>
-            <AnchorPane onKeyPressed="#positionUpdate" prefHeight="475.0" prefWidth="600.0">
+            <AnchorPane fx:id="mazePane1" onKeyPressed="#positionUpdate" prefHeight="475.0" prefWidth="600.0">
                <children>
-                  <ImageView fx:id="maze" fitHeight="425.0" fitWidth="600.0" onKeyPressed="#positionUpdate" onKeyReleased="#stop" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="maze" fitHeight="425.0" fitWidth="600.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/maze.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="robot" fitHeight="25.0" fitWidth="25.0" layoutX="15.0" layoutY="255.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="robot" fitHeight="45.0" fitWidth="60.0" layoutX="14.0" layoutY="255.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/robot.png" />
+                        <Image url="@Images/car.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="autoplay" layoutX="511.0" layoutY="431.0" mnemonicParsing="false" onAction="#autoplay" onKeyPressed="#positionUpdate" text="Autoplay" />
@@ -32,14 +32,9 @@
          <content>
             <AnchorPane prefHeight="475.0" prefWidth="600.0">
                <children>
-                  <ImageView fx:id="maze2" fitHeight="425.0" fitWidth="600.0" onKeyPressed="#positionUpdate" onKeyReleased="#stop" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="maze2" fitHeight="425.0" fitWidth="600.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/maze2.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="car2" fitHeight="51.0" fitWidth="45.0" layoutX="19.0" layoutY="17.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../IdeaProjects/Group_Project_CSC311/src/main/resources/org/example/group_project_csc311/Images/robot.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="autoplay1" layoutX="503.0" layoutY="436.0" mnemonicParsing="false" onAction="#autoplay" onKeyPressed="#positionUpdate" text="Autoplay" />

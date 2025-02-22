@@ -1,5 +1,6 @@
 package org.example.group_project_csc311;
 
+import javafx.animation.Transition;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
@@ -7,12 +8,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class MazeController {
-    
+
     @FXML
     private ImageView maze;
+
+    @FXML
+    private AnchorPane mazePane1;
 
     KeyLogger keyLog = new KeyLogger();
 
@@ -20,32 +25,10 @@ public class MazeController {
     private ImageView robot;
 
     /**
-     * Updates the current position of the robot
+     * Moves the robot
      */
-    @FXML
-    protected void positionUpdate(KeyEvent e) {
-
-        keyLog.keyPressed(e);
-
-        int robotSpeed = 10;
-
-        try {
-            if (!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
-
-                if (e.getCode() == KeyCode.W) {
-                    robot.setLayoutY(robot.getLayoutY() - robotSpeed);
-                }
-                if (e.getCode() == KeyCode.S) {
-                    robot.setLayoutY(robot.getLayoutY() + robotSpeed);
-                }
-                if (e.getCode() == KeyCode.A) {
-                    robot.setLayoutX(robot.getLayoutX() - robotSpeed);
-                }
-                if (e.getCode() == KeyCode.D) {
-                    robot.setLayoutX(robot.getLayoutX() + robotSpeed);
-                }
-            }
-        } catch(IndexOutOfBoundsException error) { }
+    public void positionUpdate() {
+        keyLog.movementController(robot, mazePane1);
     }
 
     /**
@@ -56,8 +39,9 @@ public class MazeController {
     private boolean pixelColor(int x, int y, KeyEvent e) {
         Image mazeImage = maze.getImage();
         PixelReader p = mazeImage.getPixelReader();
-        int posX = (x + 12);
-        int posY = (y + 12);
+        //get the middle of the image
+        int posX = x + ((int) robot.getFitWidth() / 2);
+        int posY = y + ((int) robot.getFitHeight() / 2);
 
         if(e.getCode() == KeyCode.W) {
             posY -= 25;
@@ -84,10 +68,5 @@ public class MazeController {
     @FXML
     protected void autoplay() {
 
-    }
-
-    @FXML
-    protected void stop() {
-        keyLog.keyReleased();
     }
 }
