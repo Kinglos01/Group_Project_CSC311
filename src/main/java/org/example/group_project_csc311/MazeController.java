@@ -1,5 +1,6 @@
 package org.example.group_project_csc311;
 
+import javafx.animation.Transition;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
@@ -7,75 +8,43 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class MazeController {
-    
+
     @FXML
     private ImageView maze;
 
-    KeyLogger keyLog = new KeyLogger();
+    @FXML
+    private AnchorPane mazePane1;
 
     @FXML
     private ImageView robot;
 
-    /**
-     * Updates the current position of the robot
-     */
     @FXML
-    protected void positionUpdate(KeyEvent e) {
+    private ImageView robot2;
 
-        keyLog.keyPressed(e);
+    @FXML
+    private AnchorPane mazePane2;
 
-        int robotSpeed = 10;
+    @FXML
+    private ImageView maze2;
 
-        try {
-            if (!(pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY(), e))) {
+    Car keyLog = new Car();
 
-                if (e.getCode() == KeyCode.W) {
-                    robot.setLayoutY(robot.getLayoutY() - robotSpeed);
-                }
-                if (e.getCode() == KeyCode.S) {
-                    robot.setLayoutY(robot.getLayoutY() + robotSpeed);
-                }
-                if (e.getCode() == KeyCode.A) {
-                    robot.setLayoutX(robot.getLayoutX() - robotSpeed);
-                }
-                if (e.getCode() == KeyCode.D) {
-                    robot.setLayoutX(robot.getLayoutX() + robotSpeed);
-                }
-            }
-        } catch(IndexOutOfBoundsException error) { }
+    /**
+     * Moves the robot
+     */
+    public void positionUpdate() {
+        keyLog.movementController(robot, maze, mazePane1);
     }
 
     /**
-     * Checks the pixel color
-     * @return true if the maze wall is in the way and false if it is not
+     * Moves the robot
      */
-    @FXML
-    private boolean pixelColor(int x, int y, KeyEvent e) {
-        Image mazeImage = maze.getImage();
-        PixelReader p = mazeImage.getPixelReader();
-        int posX = (x + 12);
-        int posY = (y + 12);
-
-        if(e.getCode() == KeyCode.W) {
-            posY -= 25;
-        }
-        if(e.getCode() == KeyCode.S) {
-            posY += 25;
-        }
-        if(e.getCode() == KeyCode.A) {
-            posX -= 25;
-        }
-        if(e.getCode() == KeyCode.D) {
-            posX += 25;
-        }
-
-        Color color = p.getColor(posX, posY);
-
-        return (color.toString()).equals("0x005399ff");
-
+    public void positionUpdate2() {
+        keyLog.movementController(robot2, maze2, mazePane2);
     }
 
     /**
@@ -84,10 +53,5 @@ public class MazeController {
     @FXML
     protected void autoplay() {
 
-    }
-
-    @FXML
-    protected void stop() {
-        keyLog.keyReleased();
     }
 }

@@ -28,4 +28,6 @@ public class MazeApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    
 }
