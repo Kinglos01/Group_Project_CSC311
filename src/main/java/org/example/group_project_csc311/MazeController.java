@@ -19,7 +19,7 @@ public class MazeController {
     @FXML
     private ImageView robot;
 
-    final int robotSpeed = 25;
+    final int robotSpeed = 20;
     /**
 
     Updates the current position of the robot**/
@@ -81,7 +81,7 @@ public class MazeController {
     private boolean pixelColor(int x, int y) {
         Image mazeImage = maze.getImage();
         PixelReader p = mazeImage.getPixelReader();
-        Color color = null;
+        Color color;
         try {
             color = p.getColor(x, y);
         }
@@ -89,10 +89,9 @@ public class MazeController {
             System.out.println("Out of bounds!");
             return false;
         }
-        return color.toString().equals("0x005399ff");
+        return !color.toString().equals("0x005399ff");
     }
     /**
-
      Autoplay the robot*/
     @FXML
     protected void autoMove(Direction d) {
@@ -134,65 +133,56 @@ public class MazeController {
                 return null;
         }
     }
+
+    Direction lastMove;
+    Direction[] savedMoves = new Direction[100];
+    Direction[] possibleMoves = new Direction[4];
+    Direction nextMove;
     @FXML
     protected void autoplay() {
         Random rnd = new Random();
-        Direction[] savedMoves = new Direction[100];
-        Direction[] possibleMoves = new Direction[4];
-        Direction lastMove = Direction.left;
-        int chosenMove;
         boolean travellingState = false;
-        boolean atEnd = false;
-        Direction nextMove;
-        int index1 = 0;
+        int index1;
         int index2 = 0;
         boolean done = false;
         while (robot.getX() <= 700 && !done) {
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() - 20)) {
+            index1 = 0;
+            if (pixelColor((int) robot.getLayoutX() + 12, (int) robot.getLayoutY() - 10)) {
                 possibleMoves[index1] = Direction.up;
+                System.out.println("possible move: up");
                 index1++;
-            };
-            if (pixelColor((int) robot.getLayoutX(), (int) robot.getLayoutY() + 20)) {
+            }
+            if (pixelColor((int) robot.getLayoutX() + 12, (int) robot.getLayoutY() + 36)) {
                 possibleMoves[index1] = Direction.down;
+                System.out.println("possible move: down");
                 index1++;
             }
-            if (pixelColor((int) robot.getLayoutX() - 20, (int) robot.getLayoutY() - 16)) {
+            if (pixelColor((int) robot.getLayoutX() - 16, (int) robot.getLayoutY() + 12)) {
                 possibleMoves[index1] = Direction.left;
+                System.out.println("possible move: left");
                 index1++;
             }
-            if (pixelColor((int) robot.getLayoutX() + 20, (int) robot.getLayoutY() - 16)) {
+            if (pixelColor((int) robot.getLayoutX() + 46, (int) robot.getLayoutY() + 12)) {
                 possibleMoves[index1] = Direction.right;
+                System.out.println("possible move: right");
                 index1++;
             }
 
             System.out.println("possible moves: " + index1);
-
             if (index1 == 1) {
-                if (lastMove == possibleMoves[0]) {
-                    travellingState = false;
-                    while (index2 != 0) {
-                        index2--;
-                    }
-                }
-                else {
-                    lastMove = possibleMoves[0];
-                    autoMove(possibleMoves[0]);
-                    if (travellingState == true) {
-                        savedMoves[index2] = lastMove;
-                        index2++;
-                    }
-                }
-
+                lastMove = oppositeMove(possibleMoves[0]);
+                autoMove(possibleMoves[0]);
             }
-            else if (index1 > 1) {
-                do {
+            else {
+                nextMove = possibleMoves[rnd.nextInt(index1)];
+                while (nextMove == lastMove) {
                     nextMove = possibleMoves[rnd.nextInt(index1)];
-                } while (nextMove == lastMove);
-                lastMove = nextMove;
+                }
+                lastMove = oppositeMove(nextMove);
                 autoMove(nextMove);
-            }
-            index1 = 0;
 
+            }
+            System.out.println(lastMove);
             done = true;
         }
     }
