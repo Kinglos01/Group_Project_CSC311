@@ -5,19 +5,26 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 
 public class KeyLogger {
+
 
     @FXML
     private ImageView image;
 
     @FXML
     private AnchorPane scene;
+
+    @FXML
+    private ImageView mazeImage;
 
     private BooleanProperty upPressed = new SimpleBooleanProperty();
     private BooleanProperty downPressed = new SimpleBooleanProperty();
@@ -28,9 +35,10 @@ public class KeyLogger {
 
 
 
-    public void movementController(ImageView image, AnchorPane scene) {
+    public void movementController(ImageView image, ImageView mazeImage, AnchorPane scene) {
         this.image = image;
         this.scene = scene;
+        this.mazeImage = mazeImage;
 
         keyPressed();
 
@@ -42,6 +50,7 @@ public class KeyLogger {
             }
         }));
     }
+
     /**
      * Checks whether the key pressed or not
      */
@@ -59,7 +68,6 @@ public class KeyLogger {
             if (e.getCode() == KeyCode.D) {
                 rightPressed.set(true);
             }
-
         });
 
         scene.setOnKeyReleased(e -> {
@@ -99,6 +107,5 @@ public class KeyLogger {
             }
         }
     };
-
 
 }

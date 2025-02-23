@@ -18,26 +18,31 @@
                         <Image url="@Images/maze.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="robot" fitHeight="45.0" fitWidth="60.0" layoutX="14.0" layoutY="255.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="robot" fitHeight="20.0" fitWidth="35.0" layoutX="10.0" layoutY="260.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/car.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="autoplay" layoutX="511.0" layoutY="431.0" mnemonicParsing="false" onAction="#autoplay" onKeyPressed="#positionUpdate" text="Autoplay" />
+                  <Button fx:id="autoplay" layoutX="511.0" layoutY="431.0" mnemonicParsing="false" onAction="#autoplay" text="Autoplay" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab fx:id="mazeTab2" text="Maze 2">
          <content>
-            <AnchorPane prefHeight="475.0" prefWidth="600.0">
+            <AnchorPane fx:id="mazePane2" prefHeight="475.0" prefWidth="600.0">
                <children>
                   <ImageView fx:id="maze2" fitHeight="425.0" fitWidth="600.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/maze2.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="autoplay1" layoutX="503.0" layoutY="436.0" mnemonicParsing="false" onAction="#autoplay" onKeyPressed="#positionUpdate" text="Autoplay" />
+                  <Button fx:id="autoplay2" layoutX="503.0" layoutY="436.0" mnemonicParsing="false" onKeyPressed="#positionUpdate2" onAction="#autoplay" text="Autoplay" />
+                  <ImageView fx:id="robot2" fitHeight="20.0" fitWidth="35.0" layoutX="24.0" layoutY="32.0" onKeyPressed="#positionUpdate2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/car.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </content>
