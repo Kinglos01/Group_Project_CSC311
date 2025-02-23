@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.group_project_csc311.MazeController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.group_project_csc311.MazeController">
    <tabs>
       <Tab fx:id="mazeTab1" text="Maze 1">
          <content>
@@ -37,7 +37,7 @@
                         <Image url="@Images/maze2.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="autoplay2" layoutX="503.0" layoutY="436.0" mnemonicParsing="false" onKeyPressed="#positionUpdate2" onAction="#autoplay" text="Autoplay" />
+                  <Button fx:id="autoplay2" layoutX="503.0" layoutY="436.0" mnemonicParsing="false" onAction="#autoplay" onKeyPressed="#positionUpdate2" text="Autoplay" />
                   <ImageView fx:id="robot2" fitHeight="20.0" fitWidth="35.0" layoutX="24.0" layoutY="32.0" onKeyPressed="#positionUpdate2" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/car.png" />

@@ -118,11 +118,13 @@ public class Car extends KeyLogger {
     };
 
     private boolean checkPixelColorUp() {
+
         Image maze = mazeImage.getImage();
         PixelReader p = maze.getPixelReader();
         double org = image.getRotate();
 
         image.setRotate(270);
+
         for(int i = 0; i < 20; i++) {
             int posX = ((int) image.getLayoutX()) + i;
             int posY = ((int) image.getLayoutY()) - 38;
