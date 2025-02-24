@@ -28,24 +28,27 @@ public class MazeController {
 
     Car keyLog = new Car();
     Car keyLog2 = new Car();
+  
     AutosolveHandler robotAuto = new AutosolveHandler();
+  
     /**
      * Moves the robot
      */
     public void positionUpdate() {
-        keyLog.movementController(robot, maze, mazePane1);
+        keyLog.movementController(robot, maze, mazePane1, true);
     }
 
     /**
      * Moves the robot
      */
     public void positionUpdate2() {
-        keyLog2.movementController(robot2, maze2, mazePane2);
+        keyLog2.movementController(robot2, maze2, mazePane2, false);
     }
 
     public void autoSolveRobot() {
         robotAuto.robotSolve(robot);
     }
+  
     /**
      * Autoplay the robot
      */

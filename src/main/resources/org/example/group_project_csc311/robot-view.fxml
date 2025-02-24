@@ -33,13 +33,13 @@
          <content>
             <AnchorPane fx:id="mazePane2" prefHeight="475.0" prefWidth="600.0">
                <children>
-                  <ImageView fx:id="maze2" fitHeight="421.0" fitWidth="613.0" layoutX="24.0" layoutY="14.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="maze2" fitHeight="450.0" fitWidth="600.0" layoutX="0.0" layoutY="0.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/maze2.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="autoplay2" layoutX="522.0" layoutY="437.0" mnemonicParsing="false" text="Autoplay" />
-                  <ImageView fx:id="robot2" fitHeight="40.0" fitWidth="60.0" layoutX="38.0" layoutY="41.0" onKeyPressed="#positionUpdate2" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                  <Button fx:id="autoplay2" layoutX="522.0" layoutY="437.0" mnemonicParsing="false" onAction="#autoplay" text="Autoplay" />
+                  <ImageView fx:id="robot2" fitHeight="20.0" fitWidth="50.0" layoutX="24.0" layoutY="28.0" onKeyPressed="#positionUpdate2" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
                         <Image url="@Images/car.png" />
                      </image>
