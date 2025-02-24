@@ -8,8 +8,6 @@ import java.util.Random;
 
 public class MazeController {
 
-    public static final int robotSpeed = 25;
-
     @FXML
     private ImageView maze;
 
@@ -30,6 +28,7 @@ public class MazeController {
 
     Car keyLog = new Car();
     Car keyLog2 = new Car();
+    AutosolveHandler robotAuto = new AutosolveHandler();
     /**
      * Moves the robot
      */
@@ -44,10 +43,13 @@ public class MazeController {
         keyLog2.movementController(robot2, maze2, mazePane2);
     }
 
+    public void autoSolveRobot() {
+        robotAuto.robotSolve(robot);
+    }
     /**
      * Autoplay the robot
      */
-    @FXML
+    /*@FXML
     protected void autoMove(Direction d) {
         switch (d) {
             case left:
