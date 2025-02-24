@@ -34,7 +34,12 @@ public class KeyLogger {
     private BooleanBinding findKeyPressed = upPressed.or(downPressed).or(leftPressed).or(rightPressed);
 
 
-
+    /**
+     * Controller for the movement
+     * @param image
+     * @param mazeImage
+     * @param scene
+     */
     public void movementController(ImageView image, ImageView mazeImage, AnchorPane scene) {
         this.image = image;
         this.scene = scene;
