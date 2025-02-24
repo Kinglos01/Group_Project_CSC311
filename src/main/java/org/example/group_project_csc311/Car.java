@@ -152,14 +152,12 @@ public class Car extends KeyLogger {
 
                 Color color = p.getColor(posX, posY);
 
-                System.out.println(color);
-
                 if (color.toString().equals("0x003fffff")) {
                     image.setRotate(org);
                     return true;
                 }
             }
-        } catch(IndexOutOfBoundsException e) { }
+        } catch(IndexOutOfBoundsException e) { return true; }
 
         return false;
     }
@@ -188,14 +186,12 @@ public class Car extends KeyLogger {
 
                 Color color = p.getColor(posX, posY);
 
-                System.out.println(color);
-
                 if (color.toString().equals("0x003fffff")) {
                     image.setRotate(org);
                     return true;
                 }
             }
-        } catch(IndexOutOfBoundsException e) { }
+        } catch(IndexOutOfBoundsException e) { return true; }
 
         return false;
     }
@@ -231,7 +227,7 @@ public class Car extends KeyLogger {
                     return true;
                 }
             }
-        } catch (IndexOutOfBoundsException e) { }
+        } catch (IndexOutOfBoundsException e) { return true; }
 
         return false;
     }
@@ -259,14 +255,12 @@ public class Car extends KeyLogger {
 
                 Color color = p.getColor(posX, posY);
 
-                System.out.println(color);
-
                 if (color.toString().equals("0x003fffff")) {
                     image.setRotate(org);
                     return true;
                 }
             }
-        } catch(IndexOutOfBoundsException e) { }
+        } catch(IndexOutOfBoundsException e) { return true; }
         return false;
     }
 
