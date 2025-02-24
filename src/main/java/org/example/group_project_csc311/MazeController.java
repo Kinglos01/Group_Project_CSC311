@@ -29,6 +29,7 @@ public class MazeController {
     Car keyLog = new Car();
     Car keyLog2 = new Car();
     AutosolveHandler robotAuto = new AutosolveHandler();
+    AutosolveHandler carAuto = new AutosolveHandler();
     /**
      * Moves the robot
      */
@@ -45,6 +46,10 @@ public class MazeController {
 
     public void autoSolveRobot() {
         robotAuto.robotSolve(robot);
+    }
+
+    public void autoSolveCar() {
+        carAuto.carSolve(robot2);
     }
     /**
      * Autoplay the robot

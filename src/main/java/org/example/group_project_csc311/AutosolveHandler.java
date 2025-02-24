@@ -17,7 +17,63 @@ public class AutosolveHandler {
     @FXML
     private ImageView mazeImage;
 
-    AnimationTimer timer = new AnimationTimer() {
+    AnimationTimer timer2 = new AnimationTimer() {
+        public void handle(long now) {
+            switch (step) {
+                case 0:
+                    image.setRotate(90);
+                    image.setLayoutY(image.getLayoutY() + 2);
+                    if (image.getLayoutY() > 380) {
+                        step++;
+                    }
+                    break;
+                case 1:
+                    image.setRotate(0);
+                    image.setLayoutX(image.getLayoutX() + 2);
+                    if (image.getLayoutX() > 210) {
+                        step++;
+                    }
+                    break;
+                case 2:
+                    image.setRotate(270);
+                    image.setLayoutY(image.getLayoutY() - 2);
+                    if (image.getLayoutY() < 220) {
+                        step++;
+                    }
+                    break;
+                case 3:
+                    image.setRotate(0);
+                    image.setLayoutX(image.getLayoutX() + 2);
+                    if (image.getLayoutX() > 390) {
+                        step++;
+                    }
+                    break;
+                case 4:
+                    image.setRotate(270);
+                    image.setLayoutY(image.getLayoutY() - 2);
+                    if (image.getLayoutY() < 30) {
+                        step++;
+                    }
+                    break;
+                case 5:
+                    image.setRotate(0);
+                    image.setLayoutX(image.getLayoutX() + 2);
+                    if (image.getLayoutX() > 500) {
+                        step++;
+                    }
+                    break;
+                case 6:
+                    image.setRotate(90);
+                    image.setLayoutY(image.getLayoutY() + 2);
+                    if (image.getLayoutY() > 380) {
+                        step++;
+                    }
+                    break;
+            }
+        }
+    };
+
+    AnimationTimer timer1 = new AnimationTimer() {
         public void handle(long now) {
             switch (step) {
                 case 0:
@@ -109,7 +165,16 @@ public class AutosolveHandler {
         image.setLayoutX(10.0);
         step = 0;
 
-        timer.start();
+        timer1.start();
 
+    }
+
+    public void carSolve(ImageView image) {
+        this.image = image;
+        image.setLayoutY(41.0);
+        image.setLayoutX(38.0);
+        step = 0;
+
+        timer2.start();
     }
 }

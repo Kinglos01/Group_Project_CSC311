@@ -38,7 +38,7 @@
                         <Image url="@Images/maze2.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="autoplay2" layoutX="522.0" layoutY="437.0" mnemonicParsing="false" text="Autoplay" />
+                  <Button fx:id="autoplay2" layoutX="522.0" layoutY="437.0" mnemonicParsing="false" onMousePressed="#autoSolveCar" text="Autoplay" />
                   <ImageView fx:id="robot2" fitHeight="40.0" fitWidth="60.0" layoutX="38.0" layoutY="41.0" onKeyPressed="#positionUpdate2" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
                         <Image url="@Images/car.png" />
