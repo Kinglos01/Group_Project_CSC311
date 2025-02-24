@@ -58,7 +58,7 @@ public class AutosolveHandler {
                 case 5:
                     image.setRotate(0);
                     image.setLayoutX(image.getLayoutX() + 2);
-                    if (image.getLayoutX() > 500) {
+                    if (image.getLayoutX() > 540) {
                         step++;
                     }
                     break;
