@@ -29,5 +29,5 @@ public class MazeApplication extends Application {
         launch();
     }
 
-    
+
 }
