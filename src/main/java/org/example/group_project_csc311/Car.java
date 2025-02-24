@@ -94,6 +94,7 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorUp()) {
                     image.setRotate(270);
                     image.setLayoutY(image.getLayoutY() - 2);
+                    System.out.println("moved up");
                 }
             }
 
@@ -101,6 +102,7 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorDown()) {
                     image.setRotate(90);
                     image.setLayoutY(image.getLayoutY() + 2);
+                    System.out.println("moved down");
                 }
             }
 
@@ -108,6 +110,7 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorLeft()) {
                     image.setRotate(180);
                     image.setLayoutX(image.getLayoutX() - 2);
+                    System.out.println("moved left");
                 }
             }
 
