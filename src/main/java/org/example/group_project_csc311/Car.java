@@ -54,10 +54,7 @@ public class Car extends KeyLogger {
     private void keyPressed() {
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.W) {
-                if(!checkPixelColorUp()) {
-                    upPressed.set(true);
-                    image.setRotate(270);
-                }
+                upPressed.set(true);
             }
             if (e.getCode() == KeyCode.S) {
                 downPressed.set(true);
@@ -66,10 +63,7 @@ public class Car extends KeyLogger {
                 leftPressed.set(true);
             }
             if (e.getCode() == KeyCode.D) {
-                if(!checkPixelColorRight()) {
-                    rightPressed.set(true);
-                    image.setRotate(0);
-                }
+                rightPressed.set(true);
             }
         });
 
