@@ -33,7 +33,13 @@ public class Car extends KeyLogger {
     private BooleanBinding findKeyPressed = upPressed.or(downPressed).or(leftPressed).or(rightPressed);
 
 
-
+    /**
+     * Controlls the movement
+     * @param image the image being controlled
+     * @param mazeImage the maze
+     * @param scene the pane the maze is on
+     * @param flip the tab being used
+     */
     public void movementController(ImageView image, ImageView mazeImage, AnchorPane scene, boolean flip) {
         this.image = image;
         this.scene = scene;

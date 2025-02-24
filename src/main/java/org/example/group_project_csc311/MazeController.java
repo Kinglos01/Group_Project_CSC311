@@ -31,14 +31,14 @@ public class MazeController {
     AutosolveHandler robotAuto = new AutosolveHandler();
     AutosolveHandler carAuto = new AutosolveHandler();
     /**
-     * Moves the robot
+     * Moves the robot on the first maze
      */
     public void positionUpdate() {
         keyLog.movementController(robot, maze, mazePane1, true);
     }
 
     /**
-     * Moves the robot
+     * Moves the robot on the second maze
      */
     public void positionUpdate2() {
         keyLog2.movementController(robot2, maze2, mazePane2, false);

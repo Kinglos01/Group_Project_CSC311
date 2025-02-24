@@ -11,9 +11,10 @@ import java.io.IOException;
 public class MazeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(MazeApplication.class.getResource("robot-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 500 );
-        stage.setTitle("Maze");
+        stage.setTitle("CSC311_GroupMaze");
 
         stage.setScene(scene);
         stage.show();
