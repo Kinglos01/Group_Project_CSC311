@@ -25,19 +25,20 @@ public class MazeController {
     private ImageView maze2;
 
     Car keyLog = new Car();
+    Car keyLog2 = new Car();
 
     /**
      * Moves the robot
      */
     public void positionUpdate() {
-        keyLog.movementController(robot, maze, mazePane1);
+        keyLog.movementController(robot, maze, mazePane1, true);
     }
 
     /**
      * Moves the robot
      */
     public void positionUpdate2() {
-        keyLog.movementController(robot2, maze2, mazePane2);
+        keyLog2.movementController(robot2, maze2, mazePane2, false);
     }
 
     /**

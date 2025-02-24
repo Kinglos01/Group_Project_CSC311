@@ -23,6 +23,8 @@ public class Car extends KeyLogger {
     @FXML
     private ImageView mazeImage;
 
+    boolean flip;
+
     private BooleanProperty upPressed = new SimpleBooleanProperty();
     private BooleanProperty downPressed = new SimpleBooleanProperty();
     private BooleanProperty leftPressed = new SimpleBooleanProperty();
@@ -32,10 +34,11 @@ public class Car extends KeyLogger {
 
 
 
-    public void movementController(ImageView image, ImageView mazeImage, AnchorPane scene) {
+    public void movementController(ImageView image, ImageView mazeImage, AnchorPane scene, boolean flip) {
         this.image = image;
         this.scene = scene;
         this.mazeImage = mazeImage;
+        this.flip = flip;
 
         keyPressed();
 
@@ -123,15 +126,30 @@ public class Car extends KeyLogger {
         double org = image.getRotate();
 
         image.setRotate(270);
-
-        int posX = ((int) image.getLayoutX()) + 20;
-        int posY = ((int) image.getLayoutY()) - 5;
         try {
-            Color color = p.getColor(posX, posY);
+            if(flip) {
+                int posX = ((int) image.getLayoutX()) + 20;
+                int posY = ((int) image.getLayoutY()) - 5;
 
-            if (color.toString().equals("0x005399ff") || color.toString().equals("0x003fffff")) {
-                image.setRotate(org);
-                return true;
+                Color color = p.getColor(posX, posY);
+
+                if (color.toString().equals("0x005399ff")) {
+                    image.setRotate(org);
+                    return true;
+                }
+
+            } else {
+                int posX = ((int) image.getLayoutX() + 20);
+                int posY = ((int) image.getLayoutY() - 15);
+
+                Color color = p.getColor(posX, posY);
+
+                System.out.println(color);
+
+                if (color.toString().equals("0x003fffff")) {
+                    image.setRotate(org);
+                    return true;
+                }
             }
         } catch(IndexOutOfBoundsException e) { }
 
@@ -145,15 +163,29 @@ public class Car extends KeyLogger {
 
         image.setRotate(0);
 
-        int posX = ((int) image.getLayoutX()) + 15;
-        int posY = ((int) image.getLayoutY()) + 28;
-
         try {
-            Color color = p.getColor(posX, posY);
+            if(flip) {
+                int posX = ((int) image.getLayoutX()) + 15;
+                int posY = ((int) image.getLayoutY()) + 28;
+                Color color = p.getColor(posX, posY);
 
-            if (color.toString().equals("0x005399ff") || color.toString().equals("0x003fffff")) {
-                image.setRotate(org);
-                return true;
+                if (color.toString().equals("0x005399ff")) {
+                    image.setRotate(org);
+                    return true;
+                }
+
+            } else {
+                int posX = ((int) image.getLayoutX() + 5);
+                int posY = ((int) image.getLayoutY() + 35);
+
+                Color color = p.getColor(posX, posY);
+
+                System.out.println(color);
+
+                if (color.toString().equals("0x003fffff")) {
+                    image.setRotate(org);
+                    return true;
+                }
             }
         } catch(IndexOutOfBoundsException e) { }
 
@@ -167,17 +199,32 @@ public class Car extends KeyLogger {
 
         image.setRotate(0);
 
-        int posX = ((int) image.getLayoutX());
-        int posY = ((int) image.getLayoutY()) + 15;
-
         try {
-            Color color = p.getColor(posX, posY);
+            if (flip) {
 
-            if (color.toString().equals("0x005399ff") || color.toString().equals("0x003fffff")) {
-                image.setRotate(org);
-                return true;
+                int posX = ((int) image.getLayoutX());
+                int posY = ((int) image.getLayoutY()) + 15;
+
+                Color color = p.getColor(posX, posY);
+
+                if (color.toString().equals("0x005399ff")) {
+                    image.setRotate(org);
+                    return true;
+                }
+
+            } else {
+                int posX = ((int) image.getLayoutX());
+                int posY = ((int) image.getLayoutY() + 10);
+
+                Color color = p.getColor(posX, posY);
+
+                if (color.toString().equals("0x003fffff")) {
+                    image.setRotate(org);
+                    return true;
+                }
             }
-        } catch(IndexOutOfBoundsException e) { }
+        } catch (IndexOutOfBoundsException e) { }
+
         return false;
     }
 
@@ -187,15 +234,29 @@ public class Car extends KeyLogger {
         double org = image.getRotate();
 
         image.setRotate(0);
-
-        int posX = ((int) image.getLayoutX()) + 40;
-        int posY = ((int) image.getLayoutY()) + 15;
         try {
-            Color color = p.getColor(posX, posY);
+            if(flip) {
+                int posX = ((int) image.getLayoutX()) + 25;
+                int posY = ((int) image.getLayoutY()) + 5;
 
-            if (color.toString().equals("0x005399ff") || color.toString().equals("0x003fffff")) {
-                image.setRotate(org);
-                return true;
+                Color color = p.getColor(posX, posY);
+
+                if (color.toString().equals("0x005399ff")) {
+                    image.setRotate(org);
+                    return true;
+                }
+            } else {
+                int posX = ((int) image.getLayoutX() + 55);
+                int posY = ((int) image.getLayoutY() + 5);
+
+                Color color = p.getColor(posX, posY);
+
+                System.out.println(color);
+
+                if (color.toString().equals("0x003fffff")) {
+                    image.setRotate(org);
+                    return true;
+                }
             }
         } catch(IndexOutOfBoundsException e) { }
         return false;
