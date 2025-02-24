@@ -20,7 +20,7 @@
                   </ImageView>
                   <ImageView fx:id="robot" fitHeight="20.0" fitWidth="35.0" layoutX="10.0" layoutY="260.0" onKeyPressed="#positionUpdate" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/robot.png" />
+                        <Image url="@Images/car.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="autoplay" layoutX="511.0" layoutY="431.0" mnemonicParsing="false" onMousePressed="#autoSolveRobot" text="Autoplay" />

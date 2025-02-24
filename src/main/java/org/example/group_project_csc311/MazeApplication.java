@@ -14,11 +14,6 @@ public class MazeApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MazeApplication.class.getResource("robot-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 500 );
         stage.setTitle("Maze");
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent keyEvent) {
-                System.out.println(keyEvent.getCode());
-            }
-        });
 
         stage.setScene(scene);
         stage.show();

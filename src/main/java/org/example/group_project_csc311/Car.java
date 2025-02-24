@@ -58,6 +58,7 @@ public class Car extends KeyLogger {
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.W) {
                 upPressed.set(true);
+
             }
             if (e.getCode() == KeyCode.S) {
                 downPressed.set(true);
@@ -67,6 +68,7 @@ public class Car extends KeyLogger {
             }
             if (e.getCode() == KeyCode.D) {
                 rightPressed.set(true);
+
             }
         });
 
@@ -94,7 +96,6 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorUp()) {
                     image.setRotate(270);
                     image.setLayoutY(image.getLayoutY() - 2);
-                    System.out.println("moved up");
                 }
             }
 
@@ -102,7 +103,6 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorDown()) {
                     image.setRotate(90);
                     image.setLayoutY(image.getLayoutY() + 2);
-                    System.out.println("moved down");
                 }
             }
 
@@ -110,7 +110,6 @@ public class Car extends KeyLogger {
                 if(!checkPixelColorLeft()) {
                     image.setRotate(180);
                     image.setLayoutX(image.getLayoutX() - 2);
-                    System.out.println("moved left");
                 }
             }
 
@@ -131,8 +130,8 @@ public class Car extends KeyLogger {
         image.setRotate(270);
         try {
             if(flip) {
-                int posX = ((int) image.getLayoutX()) + 20;
-                int posY = ((int) image.getLayoutY()) - 5;
+                int posX = ((int) image.getLayoutX()) + 25;
+                int posY = ((int) image.getLayoutY()) - 15;
 
                 Color color = p.getColor(posX, posY);
 
@@ -142,8 +141,8 @@ public class Car extends KeyLogger {
                 }
 
             } else {
-                int posX = ((int) image.getLayoutX() + 20);
-                int posY = ((int) image.getLayoutY() - 15);
+                int posX = ((int) image.getLayoutX() + 25);
+                int posY = ((int) image.getLayoutY() - 20);
 
                 Color color = p.getColor(posX, posY);
 
@@ -239,7 +238,7 @@ public class Car extends KeyLogger {
         image.setRotate(0);
         try {
             if(flip) {
-                int posX = ((int) image.getLayoutX()) + 25;
+                int posX = ((int) image.getLayoutX()) + 40;
                 int posY = ((int) image.getLayoutY()) + 5;
 
                 Color color = p.getColor(posX, posY);
